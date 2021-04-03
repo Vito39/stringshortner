@@ -18,7 +18,7 @@ class original extends React.Component{
     	for(const pair of new FormData(event.target)){
     		data.append(pair[0],pair[1]);
     	}
-    fetch('https://kamalstringshort.herokuapp.com/converttooriginal',{method:'post',body:data}).then(res=>res.json()).then(res2=>{
+    fetch('http://localhost:5000/converttooriginal',{method:'post',body:data}).then(res=>res.json()).then(res2=>{
       this.setState({
             output:res2.ok
         })

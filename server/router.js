@@ -11,9 +11,16 @@ app.get('/',(req,res)=>{
     res.send('server is up and running');
 })
 
-app.post('/shortstring',cors(),(req,res)=>{
+app.post('/shortstring',(req,res)=>{
     var data=req.body.item;
-    console.log(data);
+    
+    var j=0;
+    for(var i=0;i<data.length;i++)
+    {
+        if(data[i]<'a' || data[i]>'z')
+        j=1;
+    }
+
     var data26=short26(data);
     
     data=compress(data);
@@ -21,8 +28,12 @@ app.post('/shortstring',cors(),(req,res)=>{
     var data36;
     data36=short36(data);
     data36=data36+String.fromCharCode(255);
-
-    if(data26.length < data36.length){
+    if(j===1 )
+    {
+        data='please enter in lowercase only';
+      res.send({'ok':data})
+    }
+    else if(data26.length < data36.length){
     res.send({'ok':data26});
     }
     else{
@@ -30,7 +41,7 @@ app.post('/shortstring',cors(),(req,res)=>{
     }
 })
 
-app.post('/converttooriginal',cors(),(req,res)=>{
+app.post('/converttooriginal',(req,res)=>{
       
     var data=req.body.item;
     var j=data.length;

@@ -18,8 +18,7 @@ class home extends React.Component {
     for (const pair of new FormData(event.target)) {
       data.append(pair[0], pair[1]);
     }
-    console.log(data);
-    fetch('https://kamalstringshort.herokuapp.com/shortstring', { method: 'post', body: data }).then(res => res.json()).then(res2 => {
+    fetch('http://localhost:5000/shortstring', { method: 'post', body: data }).then(res => res.json()).then(res2 => {
       this.setState({
         output: res2.ok
       })

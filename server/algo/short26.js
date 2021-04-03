@@ -1,22 +1,27 @@
 const short26 = (data) =>{
 
       var a = [];
-      for(i=33;i<=126;i++)
+      for(i=48;i<=57;i++)
      a.push(String.fromCharCode(i));
-      for(i=161;i<=255;i++)
-      a.push(String.fromCharCode(i));
+
+     for(i=65;i<=90;i++)
+     a.push(String.fromCharCode(i));
+
+     for(i=97;i<=122;i++)
+     a.push(String.fromCharCode(i));
       
-      var base=141;
+
+      var base=62;
 
      var b = [];
 
-     for(i=0;i<data.length;i=i+3)
+     for(i=0;i<data.length;i=i+5)
      {
         var c="";
         var j=i;
         var d=0;
         var p=1;
-        for(j=i;j<i+3 && j<data.length;j++){
+        for(j=i;j<i+5 && j<data.length;j++){
             d=d+(data.charCodeAt(j)-97+1)*p;p=p*27;}
         
         while(d>0)

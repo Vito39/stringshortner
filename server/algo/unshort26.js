@@ -1,25 +1,24 @@
-const short26 = (data) =>{
+const unshort26 = (data) =>{
        
     var a = new Map();
     var j=0;
-    for(i=33;i<=126;i++)
-   {a.set(String.fromCharCode(i),j);j++;}
-    for(i=161;i<=255;i++)
-    {a.set(String.fromCharCode(i),j);j++;}
-
+    for(i=48;i<=57;i++){a.set(String.fromCharCode(i),j);j++;}
+    for(i=65;i<=90;i++){a.set(String.fromCharCode(i),j);j++;}
+    for(i=97;i<=122;i++){a.set(String.fromCharCode(i),j);j++;}
+    
     var base=27;
 
      var b = [];
 
-     for(i=0;i<data.length;i=i+2)
+     for(i=0;i<data.length;i=i+4)
      {
         var c="";
         var j=i;
         var d=0;
         var p=1;
-        for(j=i;j<i+2 && j<data.length;j++){
+        for(j=i;j<i+4 && j<data.length;j++){
             d+=a.get(data[j])*p;
-            p*=141;
+            p*=62;
         }
         
         while(d>0)
@@ -41,4 +40,4 @@ const short26 = (data) =>{
 
 }
 
-module.exports = short26;
+module.exports = unshort26;
